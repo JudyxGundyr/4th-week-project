@@ -58,9 +58,12 @@ for turn in range(4):
         print('OPPS....please Enter a valid number!')
         continue     
     
-    if (guess_row == ship_row_1 and guess_col == ship_col_1) or (guess_row == ship_row_2 and guess_col == ship_col_2):
+    if (guess_row == ship_row_1 and guess_col == ship_col_1):
         hit_count = hit_count + 1
         map[guess_row][guess_col] ='*'
+    elif (guess_row == ship_row_2 and guess_col == ship_col_2):
+        hit_count = hit_count + 1
+        map[guess_row][guess_col] ="*"
         print("Good job!!")
         if hit_count == 1:
             print('you sunk first battleship!')
@@ -69,24 +72,27 @@ for turn in range(4):
         print_map(map)
         break
     else:   
-        if (guess_row < 0 or guess_row > 5) or (guess_col < 0 or guess_col > 5):
-                print(
-                "HOPPA, you sailed too far"
-                )
+        if (guess_row < 0 or guess_row > 5) and (guess_col < 0 or guess_col > 5):
+                print("HOPPA, you sailed too far")
+
         elif(map[guess_row][guess_col] == 'x'):
                 print('Already been chossen')
         else:
             print ('you missed')
             map[guess_row][guess_col] = 'x'
+        # except ValueError:
+        #     continue
+
         print (turn + 1,'turn')   
     print_map(map)
-   
-    # print('1st ship is hidden:')
-    
-    # print(ship_row_1)
-    # print(ship_col_1)
 
-    # print('2nd ship is hidden:')
-    
-    # print(ship_row_2)
-    # print(ship_col_2)
+   
+# print('1st ship is hidden:')
+
+# print(ship_row_1)
+# print(ship_col_1)
+
+# print('2nd ship is hidden:')
+
+# print(ship_row_2)
+# print(ship_col_2)
